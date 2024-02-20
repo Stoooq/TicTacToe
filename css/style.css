@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.board-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 600px;
+  background-color: black;
+}
+.board-container .board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-color: aliceblue;
+  border: 1px solid black;
+}
+.board-container .board .x-element,
+.board-container .board .o-element {
+  font-size: 100px;
+  font-weight: bold;
+}/*# sourceMappingURL=style.css.map */
