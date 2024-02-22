@@ -5,6 +5,7 @@ import OElement from './OElement.js';
 const board = document.querySelectorAll('.board')
 const winnerDisplay = document.querySelector('.winner')
 const playerDisplay = document.querySelector('.player')
+const messageDisplay = document.querySelector('.message')
 const resetBtn = document.querySelector('.reset')
 
 const gameBoard = new GameBoard()
@@ -19,10 +20,12 @@ const showBoard = (id, player) => {
         }
     }
 
-    element.classList.add(`${player.content}-element`)
-    element.textContent = player.content
-
-    boardElement.appendChild(element)
+    if (boardElement.firstChild === null) {
+        element.classList.add(`${player.content}-element`)
+        element.textContent = player.content
+    
+        boardElement.appendChild(element)
+    }
 }
 
 const checkPlayer = () => {
@@ -37,11 +40,17 @@ const checkPlayer = () => {
 }
 
 const checkWinPlayer = (player) => {
-    gameBoard.checkWin() === 'x' || gameBoard.checkWin() === 'o' ? showWinner(player) : ''
+    gameBoard.checkWin() === 'x' || gameBoard.checkWin() === 'o' ? showWinner(player) : null
+    gameBoard.checkWin() === 'draw' ? showWinner('draw') : null
 }
 
 const showWinner = (player) => {
     winnerDisplay.classList.remove('hide')
+    if (player === 'draw') {
+        messageDisplay.textContent = 'Draw'
+        return
+    }
+    messageDisplay.textContent = 'Winner'
     playerDisplay.textContent = player.content
 }
 
@@ -56,6 +65,9 @@ const addTile = (e) => {
 const resetBoard = () => {
     winnerDisplay.classList.add('hide')
     gameBoard.reset()
+    messageDisplay.textContent = ''
+    playerDisplay.textContent = ''
+    board.forEach((tile) => tile.textContent = '')
 }
 
 board.forEach((tile) => tile.addEventListener('click', addTile))

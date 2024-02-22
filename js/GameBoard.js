@@ -4,6 +4,7 @@ class GameBoard {
         this.xoValue = ['x', 'o']
         this.index = 0
         this.temp = ''
+        this.draw = 0
     }
 
     putValue(id) {
@@ -57,10 +58,16 @@ class GameBoard {
                 return 'o'
             }
         }
+        this.draw += 1
+        if (this.draw === 27) {
+            return 'draw'
+        }
     }
 
     reset() {
         this.board = ['', '', '', '', '', '', '', '', '']
+        this.index = 0
+        this.draw = 0
     }
 }
 

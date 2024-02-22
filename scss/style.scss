@@ -6,14 +6,23 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
     height: 100vh;
     background-color: #333;
     font-family: sans-serif;
 }
 
+.heading {
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+}
+
 .board-container {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     width: 600px;
@@ -29,7 +38,7 @@ body {
         width: 200px;
         height: 200px;
         background-color: #fff;
-        border: 1px solid black;
+        border: 1px solid #333;
 
         .x-element,
         .o-element {
@@ -37,49 +46,50 @@ body {
             font-weight: bold;
         }
     }
-}
 
-.winner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform:  translate(-50%, -50%);
-    width: 598px;
-    height: 598px;
-    background-color: #fff;
-    font-size: 80px;
-    border-radius: 16px;
-    overflow: hidden;
-
-    .player {
-        font-size: 160px;
-    }
-
-    .reset {
-        margin-top: 40px;
-        width: 350px;
-        height: 125px;
-        background: none;
-        background-color: #333;
-        border: none;
-        border-radius: 8px;
-        color: #fff;
+    .winner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform:  translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
         font-size: 80px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: background-color .3s;
+        border-radius: 16px;
+        overflow: hidden;
+    
+        .player {
+            font-size: 160px;
+        }
+    
+        .reset {
+            margin-top: 40px;
+            width: 350px;
+            height: 125px;
+            background: none;
+            background-color: #333;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 80px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color .3s;
+        }
+    
+        .reset:hover {
+            background-color: #6d6d6d;
+        }
     }
 
-    .reset:hover {
-        background-color: #6d6d6d;
+    .hide {
+        display: none;
     }
 }
 
-.hide {
-    display: none;
-}
